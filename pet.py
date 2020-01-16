@@ -1,6 +1,6 @@
 
 class Pet_Virtual:
-    __slots__ = '_name', '_age', '_happy', '_weight', '_hungry', '_sed', '_sleep', '_power'
+    __slots__ = '_name', '_age', '_happy', '_weight', '_hungry', '_sed', '_sleep', '_power', '_photo'
 
     def __init__(self, name):
         self._name = name
@@ -11,6 +11,8 @@ class Pet_Virtual:
         self._sleep = False
         self._sed = False
         self._power = 50
+        self._photo = 'o<' #peixe '><#>'
+
     
     def feed(self):
         self._weight += 10
