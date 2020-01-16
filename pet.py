@@ -10,8 +10,8 @@ class Pet_Virtual:
         self._hungry = False
         self._sleep = False
         self._sed = False
-        self._power = 50
-        self._photo = 'o<' #peixe '><#>'
+        self._power = 50 #max 100
+        self._photo = 'o' #peixe '><#>'
 
     
     def feed(self):
