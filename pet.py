@@ -10,7 +10,7 @@ class Pet_Virtual:
         self._hungry = False
         self._sleep = False
         self._sed = False
-        self._power = 50 #max 100
+        self._power = 50.0 #max 100
         self._photo = 'o' #peixe '><#>'
 
     
@@ -58,7 +58,12 @@ class Pet_Virtual:
             self._photo = '>()'
 
         elif(self._age == 0.50):
+            self._photo = '><o>'
+
+        elif(self._age == 1.00):
             self._photo = '><()>'
 
-     
+
+        
+             
 
