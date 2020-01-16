@@ -4,6 +4,7 @@ import time
 import timeit
 from pet import *
 
+
 def main():
     
     move_water = '  '
@@ -38,6 +39,9 @@ def main():
         else:
             print(r'^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~')
 
+
+        print('1 - Alimentar\n2 - Brincar\n ')      
+
         aux += 1
         time.sleep(1)
         os.system('cls')
@@ -52,4 +56,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-    
