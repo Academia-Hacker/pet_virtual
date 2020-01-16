@@ -1,6 +1,7 @@
 
 import os
 import time
+import timeit
 from pet import *
 
 def main():
@@ -13,9 +14,10 @@ def main():
     #print(rex._name)
     #print(rex._happy)
     #print(rex._hungry)
+    
 
     while(aux < 100):
-
+        rex._age = time.clock()/100
         print('Name:', rex._name, '  ', 'Age:', rex._age, 'Power:', rex._power,'  ', 'Happy:', rex._happy, 'Hungry: ', rex._hungry  )
 
         for _ in range(3):
@@ -39,24 +41,15 @@ def main():
         aux += 1
         time.sleep(1)
         os.system('cls')
-        if(aux == 5):
-            rex._photo = '-o'
-
-        elif(aux == 10 ):
-            rex._photo = '>o'
-
-        elif(aux == 20):
-            rex._photo = '>()'
-
-        elif(aux == 30):
-            rex._photo = '><()>'
-
 
         
+        rex.grow_up() 
 
-
-
+   
+   
 
 
 if __name__ == "__main__":
     main()
+
+    

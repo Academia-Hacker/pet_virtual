@@ -41,5 +41,24 @@ class Pet_Virtual:
     def teach(self):
         pass
 
+    def grow_up(self):
+        
+        #print(self._age)
+        #print(self._photo)
 
+        self._age = round(self._age, 2)
+
+        if(self._age == 0.01):
+            self._photo = '-o'
+
+        elif(self._age == 0.15):
+            self._photo = '>o'
+
+        elif(self._age == 0.30):
+            self._photo = '>()'
+
+        elif(self._age == 0.50):
+            self._photo = '><()>'
+
+     
 
