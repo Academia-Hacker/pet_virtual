@@ -1,4 +1,6 @@
 
+import random
+
 class Pet_Virtual:
     __slots__ = '_name', '_age', '_happy', '_weight', '_hungry', '_sed', '_sleep', '_power', '_photo'
 
@@ -40,6 +42,13 @@ class Pet_Virtual:
 
     def teach(self):
         pass
+
+    def pet_messag(self):
+
+        list_message = ['Eu gosto de você!', 'Iuuuupii', 'Estou crescendo rápido!']
+
+        if(self._hungry):  return ('Estou com fome.')
+        else:  return(random.choice(list_message))
 
     def grow_up(self):
         

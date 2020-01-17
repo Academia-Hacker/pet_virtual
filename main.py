@@ -52,7 +52,8 @@ def main():
             print(r'^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~')
 
 
-        print('1 - Alimentar\n2 - Brincar\n ')      
+        print('1 - Alimentar\n2 - Brincar\n ')
+        if(aux % 3 == 1):  print(rex._name,':', rex.pet_messag())      
 
         aux += 1
         rex._power -= 0.1
