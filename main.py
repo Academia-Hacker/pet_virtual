@@ -15,15 +15,13 @@ def main():
     seed = '*'
 
     rex = Pet_Virtual('Rex')
-
-    #print(rex._name)
-    #print(rex._happy)
-    #print(rex._hungry)
+   
     feed_pet = False
 
     while(aux < 100):
 
-        keyboard.on_press_key("1", lambda _:rex.feed())     
+        keyboard.on_press_key("1", lambda _:rex.feed())
+        keyboard.on_press_key('2', lambda _:rex.play())     
         
         rex._age = time.clock()/100
         print('Name:', rex._name, '  ', 'Age:', rex._age, 'Power:', rex._power)
@@ -39,7 +37,6 @@ def main():
 
             else:
                 print(move_water * aux, rex._photo)
-
             
         else:
             print(r'^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~')
@@ -90,6 +87,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
 
 
