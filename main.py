@@ -5,6 +5,8 @@ import timeit
 
 from pet import *
 
+import keyboard
+
 
 def main():
     
@@ -20,9 +22,12 @@ def main():
     feed_pet = False
 
     while(aux < 100):
+
+        keyboard.on_press_key("1", lambda _:rex.feed())     
         
         rex._age = time.clock()/100
-        print('Name:', rex._name, '  ', 'Age:', rex._age, 'Power:', rex._power,'  ', 'Happy:', rex._happy, 'Hungry: ', rex._hungry  )
+        print('Name:', rex._name, '  ', 'Age:', rex._age, 'Power:', rex._power)
+        print('Weight:', rex._weight,'  ', 'Happy:', rex._happy, 'Hungry: ', rex._hungry )
 
         for _ in range(3):
             print(' ')
@@ -57,30 +62,34 @@ def main():
 
         aux += 1
         rex._power -= 0.1
+        rex._weight -= 0.05
+        rex._happy -= 0.01
+
         if(rex._power < 40.0):
             rex._hungry = True
         else:
             rex._hungry = False
 
         if(rex._power < 20.0):
-            rex._happy = False
+            rex._happy -= 0.04
 
         if(aux == 30):
             aux = 0
 
         time.sleep(1)
-        os.system('cls')
+        os.system('cls')           
 
-        
         rex.grow_up() 
 
-        if(round(rex._age, 2) == 0.90):
-            exit()
+        keyboard.unhook_all()
 
-   
+        if(round(rex._age, 2) == 9.00):
+            exit()  
    
 
 
 if __name__ == "__main__":
     main()
+
+
 
