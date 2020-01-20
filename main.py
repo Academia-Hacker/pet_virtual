@@ -80,7 +80,7 @@ def main():
 
         keyboard.unhook_all()
 
-        if(round(rex._age, 2) == 9.00):
+        if(round(rex._age, 2) == 864.00):
             exit()  
    
 

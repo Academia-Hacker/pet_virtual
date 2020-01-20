@@ -18,8 +18,8 @@ class Pet_Virtual:
     
     def feed(self):
         self._weight += 10.0
-        self._power += 25.0
-        self._happy += 10.0 #Brincar ganha +30
+        self._power += 45.0
+        self._happy += 10.0 #Brincar ganha +20
 
         if(self._weight > 80.0):  self._hungry = False
         #else:   self._hungry = True
@@ -38,7 +38,7 @@ class Pet_Virtual:
     def play(self):
         self._weight -= 5
         self._power -= 15
-        self._happy += 30
+        self._happy += 20
         
         if(self._power < 10):
             self._sed = True
@@ -68,23 +68,26 @@ class Pet_Virtual:
      
         self._age = round(self._age, 2)
 
-        if(self._age <= 12.0):
+        if(self._age <= 1.20):#2min
             self._photo = 'o'
         
-        elif(self._age <= 30.0): #0.01
+        elif(self._age <= 18.0): #30min 0.01
             self._photo = '-o'
 
-        elif(self._age == 1800.0):#0.15
+        elif(self._age <= 72.0):#2h #0.15
             self._photo = '>o'
 
-        elif(self._age == 1080.0):#0.30
+        elif(self._age <= 288.0):#8h 0.30
             self._photo = '>()'
 
-        elif(self._age == 64800.0):#0.50
+        elif(self._age <= 1135.0):#32h 0.50
             self._photo = '><o>'
 
-        elif(self._age == 4000000.0):#1.00
+        elif(self._age <= 4540.0):#128h 1.00
             self._photo = '><()>'
+
+        else:
+            self._photo = '>o  ><()>'
 
         print(self._hungry)
         if(self._happy < 0.0 or self._hungry == True):
