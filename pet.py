@@ -1,5 +1,6 @@
 
 import random
+import DB
 
 class Pet_Virtual:
     __slots__ = '_name', '_age', '_happy', '_weight', '_hungry', '_sed', '_sleep', '_power', '_photo'
@@ -14,6 +15,7 @@ class Pet_Virtual:
         self._sed = False
         self._power = 100.0 #max 250
         self._photo = 'o' #peixe '><#>'
+        DB.create_pet(self._name)
 
     
     def feed(self):
@@ -91,7 +93,10 @@ class Pet_Virtual:
 
         print(self._hungry)
         if(self._happy < 0.0 or self._hungry == True):
-            self._photo = '><X'  
+            self._photo = '><X' 
+
+    def save():
+        pass 
           
 
 

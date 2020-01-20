@@ -4,6 +4,7 @@ import time
 import timeit
 
 from pet import *
+from DB import *
 
 import keyboard
 
@@ -81,7 +82,9 @@ def main():
         keyboard.unhook_all()
 
         if(round(rex._age, 2) == 864.00):
-            exit()  
+            exit()
+
+        DB.save(rex)  
    
 
 
