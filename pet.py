@@ -91,7 +91,7 @@ class Pet_Virtual:
         else:
             self._photo = '>o  ><()>'
 
-        print(self._hungry)
+        #print(self._hungry)
         if(self._happy < 0.0 or self._hungry == True):
             self._photo = '><X' 
 

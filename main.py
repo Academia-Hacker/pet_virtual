@@ -9,20 +9,20 @@ from DB import *
 import keyboard
 
 
-def main():
+def main(pet_name):
     
     move_water = '  '
     aux = 1
     seed = '*'
 
-    rex = Pet_Virtual('Rex')
+    rex = Pet_Virtual(pet_name)
    
     feed_pet = False
 
     while(aux < 100):
 
         keyboard.on_press_key("1", lambda _:rex.feed())
-        keyboard.on_press_key('2', lambda _:rex.play())     
+        keyboard.on_press_key('2', lambda _:rex.play())           
         
         rex._age = time.clock()/100
         print('Name:', rex._name, '  ', 'Age:', rex._age, 'Power:', rex._power)
@@ -55,7 +55,7 @@ def main():
             print(r'^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~')
 
 
-        print('1 - Alimentar\n2 - Brincar\n ')
+        print('1 - Alimentar     2 - Brincar     0 - Salvar\n')
         if(aux % 3 == 1):  print(rex._name,':', rex.pet_messag())      
 
         aux += 1
@@ -74,7 +74,7 @@ def main():
         if(aux == 30):
             aux = 0
 
-        time.sleep(1)
+        time.sleep(0.50)
         os.system('cls')           
 
         rex.grow_up() 
@@ -84,14 +84,49 @@ def main():
         if(round(rex._age, 2) == 864.00):
             exit()
 
-        DB.save(rex)  
-   
+        #DB.save(rex)     
 
 
 if __name__ == "__main__":
-    main()
 
+    if(os.path.exists('db_pet.db') == True):
+        pass
+    else:        
+       DB.create_table()
 
+    run_game = False
+    pet_name = None
+    while(run_game == False):
+        print('Bem vindo ao Pet Virtual\n')
+        choose_p1 = int(input('1 - Já tenho um pet\n2 - Criar pet\n0- Sair\n'))
+
+        if(choose_p1 == 1):
+            pet_name = input('Digite o nome do pet\n')
+            check_name = check_pet(pet_name)
+            #print(check_name)
+            if(check_name == pet_name):
+                run_game = True
+            else:
+                os.system('cls')
+                print('\n** Pet não encontrado **\n\n')
+
+        elif(choose_p1 == 2):
+            pet_name = input('Digite o nome do seu novo pet\n')
+
+            check_name = check_pet(pet_name)
+            #print(check_name)
+            if(check_name == pet_name):
+                os.system('cls')
+                print('\n** Esse nome já existe. Tente outro ** \n\n')
+            else:
+                run_game = True
+
+        elif(choose_p1 == 0):
+            run_game = False
+            break
+
+    if(run_game == True):
+        main(pet_name)
 
 
 
