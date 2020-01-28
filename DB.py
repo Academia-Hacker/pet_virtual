@@ -24,8 +24,13 @@ def create_pet(nome):
 def save(rex):
     conn = sqlite3.connect('db_pet.db')
     c = conn.cursor()
-
-    c.execute("""UPDATE PETS SET AGE = %f WHERE name == 'Rex'"""%rex._age)
+    
+    #Modificar Where name == rex, assim salvará para qualquer pet
+    #c.execute("""UPDATE PETS SET AGE = %f WHERE name == 'Rex'"""%rex._age)
+    c.execute("""UPDATE PETS SET age = ?, happy = ?, weight = ?, hungry = ?, sleep = ?, power = ?, photo = ?""", 
+    (rex._age, rex._happy, rex._weight, rex._hungry, rex._sleep, rex._power, rex._photo))
+    
+    print('Saved Game')
 
     conn.commit()
 
@@ -45,6 +50,16 @@ def check_pet(nome):
         return (list_element[0][0])
 
 
+def load_pet(nome):
+    conn = sqlite3.connect('db_pet.db')
+    c = conn.cursor()
+
+    list_element = []
+
+    for row in c.execute("SELECT * FROM PETS WHERE name == '%s'"""%nome):
+        list_element.append(row)
+    
+    return (list_element[0])
 
 
 # We can also close the cursor if we are done with it
@@ -58,4 +73,7 @@ def close():
 
 #create_table()
 
+#t = load_pet('rex')
+#for x in t:
+#    print(t[1])
 

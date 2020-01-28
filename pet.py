@@ -70,10 +70,10 @@ class Pet_Virtual:
      
         self._age = round(self._age, 2)
 
-        if(self._age <= 1.20):#2min
+        if(self._age <= 0.20):#2min
             self._photo = 'o'
         
-        elif(self._age <= 18.0): #30min 0.01
+        elif(self._age <= 1.0): #30min 0.01
             self._photo = '-o'
 
         elif(self._age <= 72.0):#2h #0.15
