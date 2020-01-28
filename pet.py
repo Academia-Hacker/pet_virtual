@@ -19,8 +19,8 @@ class Pet_Virtual:
 
     
     def feed(self):
-        self._weight += 10.0
-        self._power += 45.0
+        self._weight += 15.0
+        self._power += 50.0
         self._happy += 10.0 #Brincar ganha +20
 
         if(self._weight > 80.0):  self._hungry = False
@@ -38,11 +38,11 @@ class Pet_Virtual:
         pass
 
     def play(self):
-        self._weight -= 5
-        self._power -= 15
-        self._happy += 20
+        self._weight -= 5.0
+        self._power -= 15.0
+        self._happy += 20.0
         
-        if(self._power < 10):
+        if(self._power < 10.0):
             self._sed = True
 
         self._photo = '^_^' #Feliz
@@ -97,6 +97,8 @@ class Pet_Virtual:
 
     def save():
         pass 
-          
+     
+
+
 
 

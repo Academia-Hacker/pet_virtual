@@ -1,3 +1,4 @@
+
 import sqlite3
 
 #conn = sqlite3.connect('db_pet.db')
@@ -25,10 +26,11 @@ def save(rex):
     conn = sqlite3.connect('db_pet.db')
     c = conn.cursor()
     
-    #Modificar Where name == rex, assim salvará para qualquer pet
+    #Verificar a con
     #c.execute("""UPDATE PETS SET AGE = %f WHERE name == 'Rex'"""%rex._age)
-    c.execute("""UPDATE PETS SET age = ?, happy = ?, weight = ?, hungry = ?, sleep = ?, power = ?, photo = ?""", 
-    (rex._age, rex._happy, rex._weight, rex._hungry, rex._sleep, rex._power, rex._photo))
+    c.execute("""UPDATE PETS SET age = ?, happy = ?, weight = ?, hungry = ?, sleep = ?, power = ?, photo = ? WHERE 
+    name == ?""", 
+    (rex._age, rex._happy, rex._weight, rex._hungry, rex._sleep, rex._power, rex._photo, rex._name))
     
     print('Saved Game')
 
@@ -68,7 +70,6 @@ def close():
     c = conn.cursor()
     c.close()
 
-
 #check_pet(input())
 
 #create_table()
@@ -76,4 +77,3 @@ def close():
 #t = load_pet('rex')
 #for x in t:
 #    print(t[1])
-
