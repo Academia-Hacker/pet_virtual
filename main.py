@@ -30,16 +30,17 @@ def main(pet_name):
     rex._photo = database[8] #peixe '><#>'
    
     feed_pet = False
+    last_pet_msg = ''
 
     while(aux < 100):
 
         keyboard.on_press_key("1", lambda _:rex.feed())
         keyboard.on_press_key('2', lambda _:rex.play())
-        keyboard.on_press_key('3', lambda _:DB.save(rex))
+        keyboard.on_press_key('3', lambda _:rex.save(rex))
                 
         rex._age = rex._age + time.clock()/100
-        print('Name:', rex._name, '  ', 'Age:', rex._age, 'Power:', rex._power)
-        print('Weight:', rex._weight,'  ', 'Happy:', rex._happy, 'Hungry: ', rex._hungry )
+        print('Name: {}, Age: {:.2f}, Power: {:.2f}'.format(rex._name, rex._age, rex._power))
+        print('Weight: {:.2f}, Happy: {:.2f}, Hungry: {}'.format(rex._weight, rex._happy, rex._hungry))
 
         for _ in range(3):
             print(' ')
@@ -68,22 +69,13 @@ def main(pet_name):
             print(r'^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~/\^~^~^~^~^~^~^~^~^~^~')
 
 
-        print('1 - Alimentar     2 - Brincar     0 - Salvar\n')
-        if(aux % 3 == 1):  print(rex._name,':', rex.pet_messag())      
+        print('1 - Alimentar     2 - Brincar     3 - Salvar\n')
+        if(aux % 3 == 1):  last_pet_msg =  '{}: {}'.format(rex._name, rex.pet_message())
+        print(last_pet_msg)  
+
+        rex.update()
 
         aux += 1
-        rex._power -= 0.1
-        rex._weight -= 0.03
-        rex._happy -= 0.05
-
-        if(rex._power < 40.0):
-            rex._hungry = True
-        else:
-            rex._hungry = False
-
-        if(rex._power < 20.0):
-            rex._happy -= 0.02
-
         if(aux == 30):
             aux = 0
 

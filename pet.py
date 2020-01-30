@@ -3,7 +3,7 @@ import random
 import DB
 
 class Pet_Virtual:
-    __slots__ = '_name', '_age', '_happy', '_weight', '_hungry', '_sed', '_sleep', '_power', '_photo'
+    __slots__ = '_name', '_is_saving', '_age', '_happy', '_weight', '_hungry', '_sed', '_sleep', '_power', '_photo'
 
     def __init__(self, name):
         self._name = name
@@ -15,8 +15,31 @@ class Pet_Virtual:
         self._sed = False
         self._power = 100.0 #max 250
         self._photo = 'o' #peixe '><#>'
+        self._is_saving = False
         DB.create_pet(self._name)
 
+    def update(self):
+        self._power -= 0.1
+        self._weight -= 0.03
+        self._happy -= 0.05
+
+        if(self._power < 40.0):
+            self._hungry = True
+        else:
+            self._hungry = False
+
+        if(self._power < 20.0):
+            self._happy -= 0.02
+
+        self.assert_limits()
+
+    def assert_limits(self):
+        self._weight = max(self._weight, 0)
+        self._weight = min(self._weight, 200)
+        self._power = max(self._power, 0)
+        self._power = min(self._power, 250)
+        self._happy = max(self._happy, 0)
+        self._happy = min(self._happy, 200)
     
     def feed(self):
         self._weight += 15.0
@@ -29,6 +52,7 @@ class Pet_Virtual:
         if(self._weight > 150.0): self._happy -= 10.0
 
         self._photo = '><><'
+        self.assert_limits()
 
 
     def give_water(self):
@@ -46,6 +70,7 @@ class Pet_Virtual:
             self._sed = True
 
         self._photo = '^_^' #Feliz
+        self.assert_limits()
 
     def put_to_sleep(self):
         pass
@@ -56,14 +81,15 @@ class Pet_Virtual:
     def teach(self):
         pass
 
-    def pet_messag(self):
+    def pet_message(self):
 
         list_message = ['Eu gosto de você!', 'Iuuuupii', 'Estou crescendo rápido!']
 
-        if(self._hungry):
-            self._happy -= 5
+        if(self._is_saving):
+            self._is_saving = False
+            return ('Salvando no banco...') 
+        elif(self._hungry):
             return ('Estou com fome.')
-            
         else:  return(random.choice(list_message))
 
     def grow_up(self):      
@@ -95,8 +121,9 @@ class Pet_Virtual:
         if(self._happy < 0.0 or self._hungry == True):
             self._photo = '><X' 
 
-    def save():
-        pass 
+    def save(self, pet):
+        self._is_saving = True
+        DB.save(self) 
      
 
 

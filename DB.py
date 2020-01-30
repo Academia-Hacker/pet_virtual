@@ -32,7 +32,7 @@ def save(rex):
     name == ?""", 
     (rex._age, rex._happy, rex._weight, rex._hungry, rex._sleep, rex._power, rex._photo, rex._name))
     
-    print('Saved Game')
+    # print('Saved Game')
 
     conn.commit()
 
